@@ -56,28 +56,7 @@ void led_function(void)
 	GPIO_Init(&button_GPIO);
 
 
-	/*GPIO_WriteToOutputPin(GPIOA, GPIO_PIN_NO_5, GPIO_PIN_SET);
-    delay(10);
-    GPIO_WriteToOutputPin(GPIOA, GPIO_PIN_NO_5, GPIO_PIN_RESET);
-    delay(10);*/
 
-/*	while(1)
-	{
-		if(BUTTON_PRESSED==GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_13))
-		{
-			//delay(2);
-
-			GPIO_WriteToOutputPin(GPIOA, GPIO_PIN_NO_5, GPIO_PIN_SET);
-		}
-		else
-		{
-			//delay(2);
-		GPIO_WriteToOutputPin(GPIOA, GPIO_PIN_NO_5, GPIO_PIN_RESET);
-
-		}
-
-	}
-	*/
 
 	while(1)
 	{
@@ -89,18 +68,6 @@ void led_function(void)
 		}
 
 	}
-
-/*		while(1)
-		{
-			GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_4);
-
-			delay(2);
-
-
-
-		}*/
-
-
 
 
 
