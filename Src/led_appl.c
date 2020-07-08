@@ -55,9 +55,6 @@ void led_function(void)
 
 	GPIO_Init(&button_GPIO);
 
-
-
-
 	while(1)
 	{
 		if(BUTTON_PRESSED==GPIO_ReadFromInputPin(GPIOC, GPIO_PIN_NO_13))
