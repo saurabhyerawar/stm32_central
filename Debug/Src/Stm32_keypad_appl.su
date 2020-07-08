@@ -1,0 +1,3 @@
+Stm32_keypad_appl.c:14:13:delay	24	static
+Stm32_keypad_appl.c:22:6:kepad_function	56	static
+Stm32_keypad_appl.c:91:13:kepad_appl_init	96	static
