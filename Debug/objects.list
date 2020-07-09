@@ -1,8 +1,0 @@
-"Src/Stm32_keypad_appl.o"
-"Src/led_appl.o"
-"Src/main.o"
-"Src/syscalls.o"
-"Src/sysmem.o"
-"Startup/startup_stm32f446retx.o"
-"drivers/external_comp/Stm32_Keypad4x3.o"
-"drivers/src/stm32f446xx_gpio_driver.o"

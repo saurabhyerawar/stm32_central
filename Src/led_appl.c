@@ -27,26 +27,17 @@ void led_function(void)
 	memset(&button_GPIO,0, sizeof(button_GPIO));
 
 
-/*	led_GPIO.pGPIOx = GPIOA;
+    /*Init LED*/
+	led_GPIO.pGPIOx = GPIOA;
 	led_GPIO.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
 	led_GPIO.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
 	led_GPIO.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
 	led_GPIO.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
 	led_GPIO.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
 
-	GPIO_Init(&led_GPIO);*/
-
-
-	led_GPIO.pGPIOx = GPIOA;
-	led_GPIO.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
-	led_GPIO.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_4;
-	led_GPIO.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
-	led_GPIO.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
-	led_GPIO.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
-
 	GPIO_Init(&led_GPIO);
 
-
+	/*Init button*/
 	button_GPIO.pGPIOx = GPIOC;
 	button_GPIO.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IN;
 	button_GPIO.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_13;
@@ -61,11 +52,54 @@ void led_function(void)
 		{
 			delay(2);
 
-			GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_4);
+			GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
 		}
 
 	}
+}
 
+void led_button_int_function(void)
+{
+	GPIO_Handle_t  led_GPIO;
+	GPIO_Handle_t  button_GPIO;
+
+	memset(&led_GPIO,0, sizeof(led_GPIO));
+	memset(&button_GPIO,0, sizeof(button_GPIO));
+
+
+    /*Init LED*/
+	led_GPIO.pGPIOx = GPIOA;
+	led_GPIO.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
+	led_GPIO.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+	led_GPIO.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
+	led_GPIO.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+	led_GPIO.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+
+	GPIO_Init(&led_GPIO);
+
+	/*Init button*/
+	button_GPIO.pGPIOx = GPIOC;
+	button_GPIO.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IT_FT;
+	button_GPIO.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_13;
+	button_GPIO.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_NO_PUPD;
+	button_GPIO.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+
+	GPIO_Init(&button_GPIO);
+
+	GPIO_IRQInterruptConfig(IRQ_NO_EXTI15_10, ENABLE);
+	GPIO_IRQPriorityConfig(IRQ_NO_EXTI15_10, 8);
+
+	while(1)
+	{
+
+	}
+}
+
+void EXTI15_10_IRQHandler(void)
+{
+
+	GPIO_IRQHandling(GPIO_PIN_NO_13);
+    GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
 
 
 }

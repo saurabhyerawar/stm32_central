@@ -30,9 +30,11 @@
 int main(void)
 {
 
-	kepad_function();
+	//kepad_function();
 
 	//led_function();
+
+	led_button_int_function();
 
 	for(;;);
 

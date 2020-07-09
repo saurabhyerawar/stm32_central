@@ -76,9 +76,6 @@ void kepad_function(void)
 	   }
 
 
-
-	   //delay(2);
-
    }
 
 

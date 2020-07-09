@@ -108,7 +108,7 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 		{
 			//1 . configure the RTSR
 			EXTI->RTSR |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
-			//Clear the corresponding RTSR bit
+			//Clear the corresponding FTSR bit
 			EXTI->FTSR &= ~( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
 
 		}else if (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_IT_RFT )

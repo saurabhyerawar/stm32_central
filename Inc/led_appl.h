@@ -14,5 +14,6 @@
 
 
 void led_function(void);
+void led_button_int_function(void);
 
 #endif /* LED_APPL_H_ */
