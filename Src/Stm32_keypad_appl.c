@@ -22,7 +22,6 @@ static bool my_switch[12];
 void kepad_function(void)
 {
 	Keypad_WiresTypeDef mykepad;
-	uint32_t temp=4;
 
 
 	memset(&mykepad,0, sizeof(mykepad));
@@ -39,10 +38,6 @@ void kepad_function(void)
 	mykepad.OUT1_Port = GPIOC;
 	mykepad.OUT2_Port = GPIOC;
 
-	/*mykepad.IN0pin = GPIO_PIN_NO_2;
-	mykepad.IN1pin = GPIO_PIN_NO_1;
-	mykepad.IN2pin = GPIO_PIN_NO_15;
-	mykepad.IN3pin = GPIO_PIN_NO_14;*/
 
 	mykepad.IN0pin = GPIO_PIN_NO_14;
 	mykepad.IN1pin = GPIO_PIN_NO_15;
@@ -55,7 +50,7 @@ void kepad_function(void)
 
 	Keypad4x3_Init(&mykepad);
 
-	printf("Hello World from Saurabh\n");
+	printf("Press Key to see pressed key number\n");
 
 
 
